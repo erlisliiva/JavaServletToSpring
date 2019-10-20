@@ -1,0 +1,1 @@
+SELECT * from orders left join orderrows on orders.id = orderrows.orderFK where orders.id = ?;
