@@ -1,46 +1,33 @@
 package com.erlis.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.text.StringEscapeUtils;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 @Data
+@NoArgsConstructor
 public class Item {
 
 
+    @NotNull
+    @Size(min = 2, max = 500)
     private String itemName;
+
+    @NotNull
+    @Min(1)
     private int quantity;
+
+    @NotNull
+    @Min(1)
     private int price;
 
     public Item(String itemName, Integer quantity, Integer price) {
         this.itemName = itemName;
         this.quantity = quantity;
-        this.price = price;
-    }
-
-    public Item() {
-
-    }
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
         this.price = price;
     }
 

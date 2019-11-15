@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,7 +23,7 @@ public class OrderDAO {
         this.template = template;
     }
 
-    public List<Order> getOrders() throws SQLException {
+    public List<Order> getOrders() {
 
         String sqlStatement = FileUtil.readFileFromClasspath("data.sql");
         List<Map<String, Object>> rows = template.queryForList(sqlStatement);
@@ -83,6 +82,7 @@ public class OrderDAO {
         }
         return order;
     }
+
     private void setObject(Map row, Order order) {
         order.setId((Long) row.get("id"));
         order.setOrderNumber((String) row.get("ordernumber"));
